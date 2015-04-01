@@ -1,6 +1,12 @@
+require 'delegate'
+
 class MyNum < DelegateClass(Fixnum)
   def square
     MyNum.new self * self
+  end
+
+  def +(number)
+    MyNum.new self.to_i + number
   end
 end
 
@@ -12,7 +18,7 @@ class Squares
   end
 
   def square_of_sums
-    range.reduce(&:+) ** 2
+    range.reduce(&:+).square
   end
 
   def sum_of_squares
