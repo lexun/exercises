@@ -19,11 +19,13 @@ class Squares
     range.map(&:square).reduce(&:+)
   end
 
-  def range
-    (1..number).map { |n| MyNum.new n }
-  end
-
   def difference
     square_of_sums - sum_of_squares
+  end
+
+  private
+
+  def range
+    (1..number).map { |n| MyNum.new n }
   end
 end
