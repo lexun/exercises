@@ -1,10 +1,7 @@
 module LeapYear (isLeapYear) where
 
 isLeapYear :: Integer -> Bool
-isLeapYear year
-    | isDivisibleBy 400 = True
-    | isDivisibleBy 100 = False
-    | isDivisibleBy 4   = True
-    | otherwise         = False
+isLeapYear year =
+    hasFactor 4 && (not (hasFactor 100) || hasFactor 400)
   where
-    isDivisibleBy = (==) 0 . rem year
+    hasFactor = (==) 0 . rem year
