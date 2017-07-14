@@ -1,13 +1,10 @@
 module Grains (square, total) where
 
-import Data.Maybe (fromJust)
-
 square :: Integer -> Maybe Integer
-square 1 = Just 1
-square n
-    | n < 1     = Nothing
-    | n > 64    = Nothing
-    | otherwise = fmap (* 2) (square (n - 1))
+square n = if valid then Just result else Nothing
+  where
+    valid  = n >= 1 && n <= 64
+    result = 2 ^ (n - 1)
 
 total :: Integer
-total = sum $ fromJust $ mapM square [1..64]
+total = 2 ^ 64 - 1
