@@ -1,10 +1,8 @@
 module DNA (toRNA) where
 
+import qualified Data.Map.Strict as Map
+
 toRNA :: String -> Maybe String
-toRNA = mapM t
+toRNA = mapM (`Map.lookup` rna)
   where
-    t 'G' = Just 'C'
-    t 'C' = Just 'G'
-    t 'T' = Just 'A'
-    t 'A' = Just 'U'
-    t _   = Nothing
+    rna = Map.fromList $ zip "GCTA" "CGAU"
