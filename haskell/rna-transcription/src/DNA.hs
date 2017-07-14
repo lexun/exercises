@@ -1,4 +1,10 @@
 module DNA (toRNA) where
 
 toRNA :: String -> Maybe String
-toRNA xs = error "You need to implement this function."
+toRNA = mapM t
+  where
+    t 'G' = Just 'C'
+    t 'C' = Just 'G'
+    t 'T' = Just 'A'
+    t 'A' = Just 'U'
+    t _   = Nothing
